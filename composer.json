@@ -1,0 +1,21 @@
+
+{
+    "name": "nickedwards/ResTest",
+    "description": "ResDiary developer test",
+    "authors": [
+        {
+            "name": "Nick Edwards",
+            "email": "nick@nick-edwards.co.uk"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "ResTest\\": "src"
+        }
+    }
+}
