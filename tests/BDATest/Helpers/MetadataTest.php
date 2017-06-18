@@ -42,4 +42,28 @@ class MetadataTest extends TestCase
             $metadata->getMetadataFromUrl($input['url'])
         );
     }
+
+    public function providerGetContentLengthFromUrl()
+    {
+        return [
+            'testSite' => [
+                'input' => [
+                    'url' => 'http://www.nick-edwards.co.uk/'
+                ],
+                'output' => 17830
+            ]
+        ];
+    }
+
+    /**
+     * @dataProvider providerGetContentLengthFromUrl
+     **/
+    public function testGetContentLengthFromUrl($input, $output)
+    {
+    	$metadata = new Metadata();
+        $this->assertEquals(
+            $output,
+            $metadata->getContentLengthFromUrl($input['url'])
+        );
+    }
 }
