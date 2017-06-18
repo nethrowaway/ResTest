@@ -6,10 +6,17 @@ class BlackInkParser
     const BLACKINK_URL = 'https://www.black-ink.org/';
     protected $metadataHelper;
     private $totalSize = 0;
+    private $url = NULL;
 
-    public function __construct($metadataHelper)
+    public function __construct($metadataHelper, $url=NULL)
     {
         $this->metadataHelper = $metadataHelper;
+        // allow the url to be mocked for testing
+        if (is_null($url)) {
+            $this->url = self::BLACKINK_URL;
+        } else {
+            $this->url = $url;
+        }
     }
 
     public function parseLinksInCategory($categoryName)
@@ -27,7 +34,7 @@ class BlackInkParser
     {
         // load the website with DOMDocument
         $doc = new \DOMDocument();
-        if (!$doc->loadHTMLFile(self::BLACKINK_URL)) {
+        if (!$doc->loadHTMLFile($this->url)) {
             throw new Exception('Website not loaded: ' . self::BLACKINK_URL);
         }
 
