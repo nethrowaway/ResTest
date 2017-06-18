@@ -7,7 +7,7 @@ class Metadata
     public function getMetadataFromUrl($url)
     {
         $doc = new \DOMDocument;
-        if (!$doc->loadHTMLFile($url)) {
+        if (!@$doc->loadHTMLFile($url)) {
             return false;
         }
 
@@ -53,6 +53,6 @@ class Metadata
             $contentLengthInBytes = $headers['Content-Length'];
         }
 
-        return $contentLengthInBytes;
+        return (int)$contentLengthInBytes;
     }
 }
