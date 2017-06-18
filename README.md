@@ -32,6 +32,8 @@ I've written unit tests to cover the `./src` directory, which can be run using:
 
 ### Afterthought / Room for improvement
 
-Using something like Guzzle to handle the http requests might have been a good idea. A number of http requests fail when getting used by DOMDocument, which I can only think is because it doesn't account for redirects, or the recieving server is blocking the request. It also may have been able to give a slightly better filesize than just looking for the Content-Length header.
+Using Guzzle to handle the http requests would have been a good idea. A number of http requests fail when getting used by DOMDocument, which I can only think is because it doesn't account for redirects, or the recieving server is blocking the request.
+
+Having the full html response (from Guzzle) would have also helped determine the filesize a bit more accurately than just looking for the Content-Length header. At the moment there are a number of http requests not returning the Content-Length header.
 
 Adding in some better error reporting would also have been a nice to have feature. At the moment I'm just skipping over failing http requests.
