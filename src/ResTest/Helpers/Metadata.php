@@ -40,4 +40,19 @@ class Metadata
             'keywords' => $keywords
         ];
     }
+
+    public function getContentLengthFromUrl($url)
+    {
+        // do a headers only request on the URL
+        $headers = get_headers($url, 1);
+
+        // set as 0, incase the server doesn't respond with a content-length (for whatever reason)
+        $contentLengthInBytes = 0;
+        // parse response for content length
+        if (!empty($headers['Content-Length'])) {
+            $contentLengthInBytes = $headers['Content-Length'];
+        }
+
+        return $contentLengthInBytes;
+    }
 }
