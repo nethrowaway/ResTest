@@ -15,7 +15,7 @@ class Metadata
         $title = 'Undefined';
         // find title from the dom document
         if ($docTitle = $doc->getElementsByTagName('title')) {
-            $title = $docTitle[0]->nodeValue;
+            $title = $docTitle->item(0)->nodeValue;
         }
 
         $metaTags = $doc->getElementsByTagName('meta');
